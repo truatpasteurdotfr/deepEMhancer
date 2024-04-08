@@ -17,7 +17,6 @@ RUN	\
 	conda env create -f deepEMhancer_env.yml  -n deepEMhancer_env && \
 	eval "$(conda shell.bash hook)" && \
 	conda activate deepEMhancer_env && \
-	conda env config vars set LD_LIBRARY_PATH=${CONDA_PREFIX}/lib/python3.9/site-packages/nvidia/cudnn/lib:${CONDA_PREFIX}/lib/:$LD_LIBRARY_PATH && \
+	conda env config vars set LD_LIBRARY_PATH=${CONDA_PREFIX}/lib/python3.9/site-packages/nvidia/cudnn/lib:${CONDA_PREFIX}/lib/:/.singularity.d/libs:$LD_LIBRARY_PATH && \
 	conda activate deepEMhancer_env && \
-	python -m pip install . --no-deps && \
-	deepemhancer --download
+	python -m pip install . --no-deps 
